@@ -22,7 +22,7 @@ export const useCharacter = () => {
       setCharacter(data);
 
       // Llamada al worker de Cloudflare para generar la imagen usando la descripción obtenida
-      const imgUrl = await generateImage(data.description);
+      const imgUrl = await generateImage(data.descripcion);
       setImageUrl(imgUrl);
     } catch (err) {
       setError((err as Error).message);
