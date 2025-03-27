@@ -1,8 +1,14 @@
-// /pages/api/personajes.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { queryDB } from '../../services/db';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  // Configuración de CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+
   if (req.method === 'GET') {
     // Obtener parámetros de la query
     const gender = typeof req.query.gender === 'string' ? req.query.gender : null;
