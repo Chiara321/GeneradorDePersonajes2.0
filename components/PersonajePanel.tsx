@@ -14,7 +14,7 @@ export default function PersonajePanel() {
   const handleGenerateCharacter = async (gender: string, genre: string) => {
     try {
       const response = await fetch(
-        `/api/personajes?gender=${encodeURIComponent(gender)}&genre=${encodeURIComponent(genre)}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/personajes?gender=${encodeURIComponent(gender)}&genre=${encodeURIComponent(genre)}`
       );
       if (!response.ok) throw new Error('Error al obtener personaje');
       const data: Character = await response.json();
