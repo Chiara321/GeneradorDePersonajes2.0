@@ -1,3 +1,4 @@
+// /hooks/useCharacter.ts
 import { useState } from 'react';
 import { generateImage } from '../services/cloudflare';
 import { Character } from '../types/character';
@@ -16,7 +17,7 @@ export const useCharacter = () => {
 
     try {
       // Llamada al endpoint para obtener nombre y descripción basados en gender y genre
-      const response = await fetch(`/api/personajes?gender=${gender}&genre=${genre}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/personajes?gender=${encodeURIComponent(gender)}&genre=${encodeURIComponent(genre)}`);
       if (!response.ok) throw new Error('Error al obtener el personaje');
       const data: Character = await response.json();
       setCharacter(data);
